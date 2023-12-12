@@ -1,7 +1,8 @@
 import './App.css';
 import Navbar from './components/Navbar';
 import TextForm from './components/Form';
-import { useState } from 'react';
+import React, { useState } from 'react';
+
 // import About from './components/About';
 
 function App() {
@@ -10,7 +11,7 @@ function App() {
   const toggleMode = ()=>{
     if(mode === 'light'){
       setMode('dark');
-      document.body.style.backgroundColor = 'grey';
+      document.body.style.backgroundColor = '#001133';
     }
     else{
       setMode('light');
@@ -23,8 +24,7 @@ function App() {
       <Navbar title="Textme" about="About us" mode={mode} toggleMode={toggleMode}/>
 
       <div className="container my-3">
-          <TextForm heading="Enter your text to analyze"/>
-          {/* <About/> */}
+          <TextForm heading="Enter your text to analyze" mode={mode}/>
       </div>
       
       

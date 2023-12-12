@@ -42,11 +42,10 @@ export default function Textform(props) {
 
   return (
     <>
-    <div className='container'>
+    <div className='container' style={{color: props.mode==='dark'?'white':'black'}}>
     <h1>{props.heading}</h1>
-
     <div className="mb-3">
-      <textarea className="form-control" id="myBox" style={{backgroundColor: props.mode==='dark'?'grey':'white'}} value={text} onChange={handleOnChange} rows="10" ></textarea>
+      <textarea className="form-control" value={text} onChange={handleOnChange} style={{backgroundColor: props.mode==='dark'?'grey':'white', color: props.mode==='dark'?'white':'black'}} id="myBox"  rows="10" ></textarea>
     </div>
     <button className='btn btn-primary mx-1 my-1' onClick={handleUpClick}>Convert to Uppercase</button>
     <button className='btn btn-primary mx-1 my-1' onClick={handleLoClick}>Convert to Lowercase</button>
@@ -55,12 +54,12 @@ export default function Textform(props) {
     <button className='btn btn-primary mx-1 my-1' onClick={handleExtraSpaces}>Remove Extra Spaces</button>
     </div>
 
-    <div className="container my-4">
+    <div className="container my-4" style={{color: props.mode==='dark'?'white':'black'}}>
       <h2>Your text summary</h2>
       <p>{text.split(" ").length} words and {text.length} characters</p>
       <p>{0.008 * text.split(" ").length} Minutes</p>
       <h2>Preview</h2>
-      <p>{text}</p>
+      <p>{text.length>0?text:"Enter something above to preview it here"}</p>
     </div>
     </>
   )
