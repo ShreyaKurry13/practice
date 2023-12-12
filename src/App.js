@@ -4,6 +4,7 @@ import TextForm from './components/Form';
 import React, { useState } from 'react';
 import Alert from './components/Alert';
 import About from './components/About';
+import { BrowserRouter as Router, Routes,Route } from "react-router-dom";
 
 function App() {
   const [mode, setMode] = useState('light');
@@ -42,17 +43,17 @@ function App() {
 
   return (
     <>
+    <Router>
       <Navbar title="Textme" about="About us" mode={mode} toggleMode={toggleMode}/>
-      
       <Alert alert={alert}/>
+      <Routes>
+          <Route path="/about" element={<About />}></Route>
+          
+          <Route path="/" element={<TextForm showAlert={showAlert} heading="Enter your text to analyze" mode={mode}/>}></Route>
 
-      <div className="container my-3">
-          {/* <TextForm showAlert={showAlert} heading="Enter your text to analyze" mode={mode}/> */}
-      </div>
-      <About/>
-      
+        </Routes>
+      </Router>
     </>
   );
 }
-
 export default App;
